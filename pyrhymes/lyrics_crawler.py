@@ -57,8 +57,8 @@ def crawler():
                         time.sleep(config.CRAWLER_WAIT + config.CRAWLER_WAIT * random.random())
 
                 except IndexError:
-                    LOG.error(f"Access denied while accesing: {lyric_path}")
-                    time.sleep(20 * config.CRAWLER_WAIT)
+                    LOG.error(f"Access denied while scraping: {lyric_path} \nTry increasing the waiting time.")
+                    time.sleep(10 * config.CRAWLER_WAIT)
                 except Exception as err:
                     print(f"ERROR: {lyric_path}: {err}")
 
@@ -68,7 +68,3 @@ def crawler():
 
 if __name__ == '__main__':
     crawler()
-
-
-
-

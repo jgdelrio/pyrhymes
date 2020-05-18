@@ -2,6 +2,7 @@ from logging import INFO
 import pathlib
 
 
+# Folders
 ROOT = pathlib.Path(__file__).parents[1]
 LYRICS_FOLDER = 'lyrics'
 
@@ -18,5 +19,7 @@ ARTISTS = ["a/andre3000.html", "e/eminem.html", "g/ghostface.html", "h/hill.html
 
 FULL_URLS = [BASE_URL + art for art in ARTISTS]
 
+# Settings
 CRAWLER_WAIT = 10
+MAX_LENGTH = int(10000)
 VERBOSE = 1
