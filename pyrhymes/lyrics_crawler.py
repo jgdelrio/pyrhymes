@@ -21,6 +21,7 @@ def get_lyrics(url):
 
 
 def crawler():
+    counter = 1
     for url_ref in config.FULL_URLS:
         resp = requests.get(url_ref)
         if resp.status_code == 200:
@@ -48,17 +49,21 @@ def crawler():
                         file_found = lyrics_file.is_file()
 
                     if not file_found:
-                        LOG.info(f"Downloading [{writer}]: {song_name}")
                         # url = config.BASE_URL + lyric_path
                         text = get_lyrics(lyric_path).strip()
+                        LOG.info("Downloading (" + str(counter).zfill(3) +
+                                 f") [{writer}]: {song_name}")
+                        counter += 1
 
                         with open(lyrics_file, "w") as f:
                             f.write(text)
                         time.sleep(config.CRAWLER_WAIT + config.CRAWLER_WAIT * random.random())
 
                 except IndexError:
-                    LOG.error(f"Access denied while accesing: {lyric_path}")
-                    time.sleep(20 * config.CRAWLER_WAIT)
+                    LOG.error(f"Access denied while scraping: {lyric_path} \n"
+                              f"Try increasing the waiting time.\n"
+                              f"Finishing the scrapping for the moment. Try to access on your browser to unblock access")
+                    return
                 except Exception as err:
                     print(f"ERROR: {lyric_path}: {err}")
 
@@ -68,7 +73,3 @@ def crawler():
 
 if __name__ == '__main__':
     crawler()
-
-
-
-
