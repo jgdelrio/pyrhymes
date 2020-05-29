@@ -14,9 +14,9 @@ LOG_FOLDER = ROOT.joinpath('logs')
 # References
 BASE_URL = "https://www.azlyrics.com/"
 # Artists
-ARTISTS = ["g/ghostface.html", "h/hill.html", "k/kendricklamar.html",
+ARTISTS = ["h/hill.html", "k/kendricklamar.html",
            "n/nas.html", "n/notorious.html", "r/rakim.html"]
-ARTISTS_DONE = ["a/andre3000.html", "e/eminem.html", "i/icecube.html", "j/jayz.html"]
+ARTISTS_DONE = ["a/andre3000.html", "e/eminem.html", "g/ghostface.html", "i/icecube.html", "j/jayz.html"]
 
 FULL_URLS = [BASE_URL + art for art in ARTISTS]
 
